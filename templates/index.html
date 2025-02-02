@@ -1,60 +1,58 @@
 {% extends "layouts/layout.html" %}
+{% from "macros/nav.html" import render_nav %}
 {%block children%}
-<h1 class="text-xl">Index</h1>
-
-<div class="dropdown mb-72">
-  <div tabindex="0" role="button" class="btn m-1">
-    Theme
-    <svg
-      width="12px"
-      height="12px"
-      class="inline-block h-2 w-2 fill-current opacity-60"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 2048 2048">
-      <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-    </svg>
-  </div>
-  <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl">
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Default"
-        value="default" />
-    </li>
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Retro"
-        value="retro" />
-    </li>
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Cyberpunk"
-        value="cyberpunk" />
-    </li>
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Valentine"
-        value="valentine" />
-    </li>
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Aqua"
-        value="aqua" />
-    </li>
-  </ul>
+{{ render_nav() }}
+<div class="mx-auto max-w-5xl">
+    <header class="py-28 w-3/4 mx-auto space-y-12">
+        <section class="space-y-4">
+            <h1 class="text-5xl font-bold text-center">Gestiona tareas en grupo de manera eficiente</h1>
+            <h2 class="text-md text-neutral-700 text-center">
+                TaskMind te permite crear y administrar tareas en grupos,
+                asignar responsabilidades y hacer seguimiento del progreso en tiempo
+                real.
+            </h2>
+        </section>
+        <section class="flex justify-center">
+            <a
+                href=""
+                class="bg-black font-semibold text-white inline-flex
+                items-center gap-2 px-3 py-2 rounded-md
+                hover:opacity-75 transition-opacity"
+            >
+                <span>Crear una cuenta gratis</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </section>
+        <section class="flex justify-center gap-6 text-sm items-center">
+            <h3 class="inline-flex items-center gap-2">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Ideal para equipos</span>
+            </h3>
+            <h3 class="inline-flex items-center gap-2">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Fácil de usar</span>
+            </h3>
+        </section>
+    </header>
+    <main>
+        <section class="space-y-8">
+            <header class="space-y-4">
+                <h4 class="text-4xl font-bold text-center">Características principales</h4>
+                <p class="text-md text-neutral-700 text-center">Todo lo que necesitas para gestionar tareas en equipo</p>
+            </header>
+            <main class="grid grid-cols-4 gap-4">
+                {% for characteristic in characteristics %}
+                <article class="space-y-4 border-2 p-4 rounded-md flex flex-col justify-between">
+                    <div class="space-y-1">
+                        <span class="{{characteristic["icon"]}} text-2xl"></span>
+                        <h5 class="text-xl font-semibold">{{characteristic["title"]}}</h5>
+                        <p class="text-sm text-neutral-600">{{characteristic["desc"]}}</p>
+                    </div>
+                    <p class="text-sm">{{characteristic["content"]}}</p>
+                </article>
+                {% endfor %}
+            </main>
+        </section>
+    </main>
 </div>
 {%endblock%}

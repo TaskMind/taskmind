@@ -1,4 +1,5 @@
 from flask import Flask
+#routes
 from routes.pages import bp as bpPages
 
 app = Flask(__name__)
