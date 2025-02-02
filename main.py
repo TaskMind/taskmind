@@ -1,7 +1,6 @@
 from flask import Flask
+from routes.pages import bp as bpPages
 
 app = Flask(__name__)
 
-@app.get("/")
-def index():
-    return "Hello"
+app.register_blueprint(bpPages)
