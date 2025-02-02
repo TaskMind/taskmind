@@ -1,9 +1,10 @@
 {% extends "layouts/layout.html" %}
-{% from "macros/nav.html" import render_nav %}
+{% from "macros/common/nav.html" import render_nav %}
+{% from "macros/UI/link.html" import render_link %}
 {%block children%}
 {{ render_nav() }}
 <div class="mx-auto max-w-5xl">
-    <header class="py-28 w-3/4 mx-auto space-y-12">
+    <header class="py-28 mx-auto space-y-12 w-full md:w-3/4">
         <section class="space-y-4">
             <h1 class="text-5xl font-bold text-center">Gestiona tareas en grupo de manera eficiente</h1>
             <h2 class="text-md text-neutral-700 text-center">
@@ -13,15 +14,7 @@
             </h2>
         </section>
         <section class="flex justify-center">
-            <a
-                href=""
-                class="bg-black font-semibold text-white inline-flex
-                items-center gap-2 px-3 py-2 rounded-md
-                hover:opacity-75 transition-opacity"
-            >
-                <span>Crear una cuenta gratis</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            {{ render_link(label="Crear una cuenta gratis") }}
         </section>
         <section class="flex justify-center gap-6 text-sm items-center">
             <h3 class="inline-flex items-center gap-2">
@@ -34,13 +27,13 @@
             </h3>
         </section>
     </header>
-    <main>
+    <main class="space-y-24">
         <section class="space-y-8">
             <header class="space-y-4">
                 <h4 class="text-4xl font-bold text-center">Características principales</h4>
                 <p class="text-md text-neutral-700 text-center">Todo lo que necesitas para gestionar tareas en equipo</p>
             </header>
-            <main class="grid grid-cols-4 gap-4">
+            <main class="grid gap-4 grid-cols-1 md:grid-cols-4">
                 {% for characteristic in characteristics %}
                 <article class="space-y-4 border-2 p-4 rounded-md flex flex-col justify-between">
                     <div class="space-y-1">
@@ -52,6 +45,47 @@
                 </article>
                 {% endfor %}
             </main>
+        </section>
+        <section class="space-y-8" id="aboutUs">
+            <header class="space-y-4">
+                <h4 class="text-4xl font-bold text-center">Sobre Nosotros</h4>
+                <p class="text-md text-neutral-700 text-center">Un proyecto creado por estudiantes, para estudiantes</p>
+            </header>
+            <main  class="grid gap-4 grid-cols-1 md:grid-cols-2">
+                {% for item in aboutUs %}
+                <article class="space-y-4 border-2 p-4 rounded-md flex flex-col justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="{{item["icon"]}} text-xl"></span>
+                        <h5 class="text-xl font-semibold">{{item["title"]}}</h5>
+                    </div>
+                    <p class="text-sm">{{item["desc"]}}</p>
+                </article>
+                {% endfor %}
+            </main>
+        </section>
+        <section class="space-y-8" id="contribute">
+            <header class="space-y-4">
+                <h4 class="text-4xl font-bold text-center">Contribuye al Proyecto</h4>
+                <p class="text-md text-neutral-700 text-center">TaskMind es un proyecto open source y tu ayuda es bienvenida</p>
+            </header>
+            <main  class="grid gap-4 grid-cols-1 md:grid-cols-3">
+                {% for item in contribute %}
+                <article class="space-y-4 border-2 p-4 rounded-md flex flex-col justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="{{item["icon"]}} text-xl"></span>
+                        <h5 class="text-xl font-semibold">{{item["title"]}}</h5>
+                    </div>
+                    <p class="text-sm">{{item["desc"]}}</p>
+                </article>
+                {% endfor %}
+            </main>
+            <footer class="text-center space-y-1">
+                <h6 class="text-xl font-semibold">Tecnologías que usamos</h6>
+                <p class="text-sm">HTML-CSS-PYTHON-RAILWAY-TAILWINDCSS-FLASK-JINJA</p>
+            </footer>
+            <div class="flex justify-center">
+                 {{ render_link(label="Github", icon="fa-brands fa-github") }}
+            </div>
         </section>
     </main>
 </div>
